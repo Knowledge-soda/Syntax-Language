@@ -1,0 +1,518 @@
+Syntax Language
+Syntax Language (SL) is markup language, mostly human readible, which main purpose is documenting syntaxes.
+It's also good for any document that have some new syntax and it even could be used in any document general.
+
+Section 1 - titles:
+
+======= Document title =======
+***** What document is about.*****
+<--: Author Name || site::author username || author other username || author.email@something :: basic author description
+<--: Other Author Name || site::other author username || other author other username || author.other@something :: basic other author description
+-l@ licence [licence website]; licence owner
+-t@ time of creation
+-w@ document website
+-v@ version <State ~ short message>
+\\ Previous Documents [website] <> Following Documents [website] //
+:~: Table of Content::
+  ~: Introduction
+    ~: Some basic thing
+    ~:: What thing is about
+  ~: Part I: Something
+  ~:: What something is about
+    ~: Introduction
+      *~ Some notes
+    ~: Some title
+    ~?: Some question on the title?
+    ~: Some other title
+    ~:Problem: Some problem
+  ~: Part II: Something else
+  ~?: Some question about something else?
+~~~
+  ~: Appendix A
+  ~: Appendix B
+  <~ About Author
+  <~ About Other Author
+  *~: Notes
+
+~~~~ Introduction ~~~~
+Some introduction text.
+
+---- Some bacis thing ----
+~~ What thing is ~~
+Some text about thing.
+
+~~~~ Part I: Something ~~~~
+\\\ What something is about ///
+---- Introduction ----
+Some introduction text about something.
+
+** Some notes **\
+We will define notes later!
+
+---- Some Title ----
+:?~ Some question on the title? ~~
+Some text about problem from question.
+:~: Table of Content::
+  ~: Solution 1
+  ~:: Some stupid text about solution
+    ~: Solution part 1
+    ~:: Some weird line
+    ~: Solution part 2
+    ~?: Could we do blablabla?
+    ~: Problem
+    ~:Problem: Some problem
+  ~: Solution 2
+
+`` Solution 1 ``
+  <:: Some stupid line about solution.
+Some text about solution.
+``` Solution part 1 ```
+  <:: Some weird line.
+Some text.
+
+``` Solution part 2 ```
+  <?: Could we do blablabla?
+Some text.
+
+``` Problem ```
+   <:Problem: Some problem
+Some text (with solution I supose).
+
+``::
+Some text continued from Solution 1
+
+`` Solution 2 ``
+Some (probably) short text.
+
+--::
+Some text continued from Some Title
+
+---- Some other Title ----
+:Problem:~ Some problem ~~
+Some text.
+
+~~::
+Some text continued from Part I
+
+~~~~ Part II: Something else ~~~~
+?:\\ Some question about something else? ///
+
+~~~~~~~~~~~~
+~~~~ Appendix A ~~~~
+Some additional text.
+
+~~~~ Appendix B ~~~~
+Some additional text.
+
+<~~> About Author <~~>
+Author Name (birth date) is invented person (by me) because I needed an example.
+
+<~~> About Other Author <~~>
+Other Author Name (birth date) is invented person (by me) because I needed an another example.
+
+** Notes **\
+This will be defined later.
+
+
+Notes:
+If entire document description is question use:
+**?** Question? *****
+, if it's problem:
+**:Problem:*** Some Problem *****
+
+There should be at least one author (<--:), there is no upper limit about this one.
+
+Requested parts are: Document title (======= ======), author (<--:) [even without description], TOC [Table of Content], and at least one part (~~~~ ~~~~)
+
+Recommended parts are: Document description (***** *****), author email, basic author description, licence (-l@) [with website and licence owneer], document website (-w@), version (-v@) [state and short message 
+
+would be appreciated], appendix/es (~~~ or ~~~~~~~~~~~~) and about author (<~~> <~~>)
+
+If part description is problem then use:
+:Problem:\\\ Some problem ///
+
+Appendix and About Author have same rules as parts (~~~~ ~~~~).
+
+If you don't have previous parts and you won't have next parts omit \\ <> //, omit < if you dont' have previous parts and > if you won't have next parts, you don't have to name following parts, if you don't know will you 
+
+have following parts use ~> instaed of >, if document is binding two or more documents use | and ()
+Examples:
+\\ ~> //
+if it's first part and there might be following parts
+\\ Document X [www.document_x.com] <~> //
+if Document X is previous, www.document_x.com is site for Document X and there might be following parts
+\\ Document X, Document Y <> //
+if Document X and Document Y are previous, Document X is also previous in Document Y (they are all in same sequel) and there will be following parts.
+\\ Document X | Document Y < //
+if Document X and Document Y are previous, Document X and Document Y aren't connected and it's last part
+\\ Document X | Document Z | Document Y <> Document A //
+if Document X, Document Z and Document Y are previous, Document X, Document Z and Document Y aren't connected and Document A is following
+\\ Document X, Document Z | Document Y <> Document A, (Document B | Document C) //
+if Document X, Document Z and Document Y are previous, Document X is previous in Document Z but Document Y isn't connected to Document X nor Document Z; Document A, Document B and Document C are 
+
+following, Document A is both previous in Document B and Document C but Document B and Document C aren't connected
+
+Just add your name on end of licence so nobody can steal it.
+
+Section 2: text styling and simmiliar:
+
+*/ italic text /* represents not so literal text
+*! bold text !* represents important text
+*- crossed text -* represents not valid text/out of date text
+*!/ bold and italic /* just bold !*
+
+${Some code text}
+
+$link@[www.example.com] explanation for something
+$something useful@[~~:Part I: Something~:Some Title] first ~ means absolte path
+$this@[|~:Introduction] | means relative path
+$old doc thing@[\~:Document X~:Part III: blabla~:some weird thing] \ means from document history
+$some new doc thing@[www.document_d.com:<~:Elevators] :< means from website
+
+like **note** iv@~~:Notes*\  iv is note number (name) and ~~:Notes is its place
+like ** other note ** 2@|~:Few notes*\  2 is note number (name) and |~:Few notes is its place
+** Notes **\
+- i ** First Note
+ \* Second line
+- ii ** Second Note
+- 1 ** Normally numbered note
+- Name of note ** Named note
+ \* Second line
+
+\** Note: some note text
+ \* Second note line
+ \* Third note line
+\!* Warning: some warning text
+ \* And another warning line
+\?* Should we use this tutorial?
+ \* Another question line?
+ \ And question answer
+
+<--+: Comment
+ \--+: Another comment line
+ \--+: And another
+<-:Author+:
+ \--+: Another comment line
+<--+: Comment <-:Some Guy+: Comment about comment
+Some information <*+ about ... <*-+: Yeah really
+Some useful <*+ information <*+ about ... <*:Some Guy+: Not really useful, but Ok :-> <*-+: Yeah really
+
+//:term :: term definition:\\
+\Example x::
+Example...
+:/
+
+\:Quote:[source/person]: First line of quote which might be skipped
+ :: Second quote line
+\:Quote:: <One old qoute from unknown resource>
+ :: First quote line
+
+... we will list few things:
+  - a
+  - b
+    - b1
+    - b2
+  - c
+We can also enumerate list:
+  1 a
+  2 b
+    1 b1
+    2 b2
+  3 c
+We can use letters instead:
+  a. something
+  b. something else
+Or roman numbers:
+  I something
+  II something else
+And we can combine:
+  1 Section a
+  2 Section b
+    I Subsection b.a
+    II Subsection b.b
+       - ...
+
+|:| Thing A | Thing B | Thing C |:|  horizontal list
+|:| Thing A | Thing B | Thing C |:| -::  horizontal list with description of each element below
+  :- Thing A :: something || something else
+  :- Thing B :: some stats || weird things
+  :- Thing C :: No comment |/|  no second part
+
+ --| Optional Table Name |--
+//:|| Column 1 || Column 2 :\\
+Row 1/: Thing A || Thing B
+Row 2/: Thing C || Thing D
+::\\
+ --||--
+//:|| Column 1 || Column 2 :\\
+Row 1/: Thing A || Thing B
+Row 2/: Thing C || Thing D
+::\\
+--||--
+//: Column 1 || Column 2 :\\
+/: Thing A || Thing B
+/: Thing C || Thing D
+::\\ <--+: When rows aren't important
+
+Notes:
+When using both source and person in quotes use it like this: [Some Person@www.example.com],
+when defining quote from book use: [Book name//Book author:],
+when someone from book said it use: [Guy from book@Book name//Book author:],
+if you have book website use: [Book name[www.example.com]//Book author:],
+if book have it's own sections system use: [Holy Bible@:John 8:32],
+if we use (almost) everything: [Document title[www.example.com]//Author Name;Other Author Name:@:Part I: Something~:Introduction]
+
+Use _ _ for literals, like _**_ when you don't want notes...
+
+Section 3: Syntaxes:
+
+::Syntax::
+Some syntax.
+.:.
+
+Note that ::Syntax:: is always Syntax
+
+:::
+Something that uses previously defined syntax.
+.:.
+
+::Syntax:: Brief syntax explanation
+ :Second line of explanation
+ :And third
+Some syntax
+.:.
+
+::Syntax:X: Syntax named X
+Some syntax
+.:.
+
+:X:
+Something that uses syntax x
+.:.
+
+\Example x:::
+Example that uses previously defined syntax
+:/
+
+\Example x:X:
+Example that uses syntax X.
+:/
+
+::Syntax::
+{Here can anything go} : but here only this
+/{young//old} man
+Su{whatever}
+/* /n* /a* /A* /r* /R* /d*
+.:.
+
+Here is list of /* s:
+/* any character
+/n* any number
+/a* any lower case letter
+/A* any upper case letter
+/r* any Roman lower case numeral
+/R* any Roman upper case numeral
+/d* any digit
+
+:::
+Blabla : but here only this
+young man
+Sun
+q 87 a B iii XII 1
+.:.
+
+:::
+This is very
+long : but here only this
+old man
+Sumatra 
+  city
+* -14.4124 p Q civ I 0
+.:.
+
+::Syntax::
+/(5)*
+/(<6)*
+/(2-8)*
+/(>2)*
+/d(2)*
+/a(<3)*
+/A(2-4)*
+.:.
+
+:::
+*d21\
++11
+bbalo
+NMC
+  HHHH
+01
+ac
+DVC
+.:.
+
+Note: only /* /a* /A* and /d* are only countable but if you use <, they might be nothing; newline is one character.
+
+::Syntax::
+/[!aA\;\n;__;666](5-8)*
+/aA[!a-e;P-L](>0)*
+/d[2;3×4;!0;123](<11)*
+.:.
+
+In fist there might be 5 to 8 characters which aren't letters, all characters must be in one line because \n (newline symbol) isn't allowed, __ and 666 aren't allowed.
+In second there might be any number of letters (except 0) and there mustn't be letters from a to e (lower-case) and from P to L (upper-case).
+In third there must be less than 11 digits, it must contain 2 and 3 times 4 and there mustn't be 0 and 123.
+
+::Syntax::
+/[a\×2;_;_;3×2-4;!A\;_!_](4-23)*
+/[!a\<:c;p;g-j:>;!A\](>0)*
+.:.
+
+In first example there must be two lowercase letters, 
+
+Remember: _ _ is using for literals
+
+::Syntax::
+\c\:
+:a: = /(5-8)*
+:b: = /(5-8)*
+:a: != :b:
+://
+:a: isn't same as :b:
+.:.
+
+:::
+ABCDEF isn't same as abcdef
+.:.
+
+Text operators:
+  = equal: ab2 = ab2
+  != not equal: ab2 != Ab2
+  < less: abcd < abd
+  > more: abc > ABC [see ASCII table]
+  <= less or equal
+  >= more or equal
+  =~ case insensitive equal: ABC ~ abc
+  !~ case insensitive not equal
+  <~ case insensitive less
+  ~> case insensitive more
+  ~>= case insensitive less or equal
+  <~= case insensitive more or equal
+  + plus: ABC + def = ABCdef
+  × times: abc×3 = abcabcabc
+  ~ case insensitive[unary]: ~abc = ABC
+  >- contains: abc >- ab
+  -< contaied by: ab -< abc
+  >~ case insensitive contains
+  ~< case insensitive contained by
+  @() at index: Abcdef@(3) = c ; ABCDEF@(2-5) = BCD
+
+Number operators:
+  = equal: 5 = 5
+  != not equal: 5 != 5
+  < less: 3 < 5
+  > more: 5 > 3
+  <= less or equal
+  >= more or equal
+  + plus: 5 + 3 = 8
+  - minus: 5 - 3 = 2
+  × times: 4 × 2 = 8
+  / dived by: 4 / 2 = 2
+  % reminder modulo: 5 % 2 = 1
+  ^ on n [potentions]: 5 ^ 2 = 25
+  - minus [unary]: -5
+  +=, -=, ×=, /=, %=, ^= changing variable; x += 1 is short for x = x + 1 ...
+  \ {} decimal point place: \2{2.342} = 2.34; \0{55.58} = 55
+  \ () rounding on decimal point: \2(2.486) = 2.49; \0(2.66) = 3; \-2(5424) = 5400
+  || bitwise or: 5 || 3 = 7
+  && bitwise and: 5 && 3 = 1
+  ^^ bitwise xor: 5 ^^ 3 = 6
+
+Logical operators:
+  | or: 5 = 8 | 3 < 4 is true
+  & and: 5 = 8 & 3 < 4 is false
+  ! not: ! 5 = 5 is false
+
+Converting:
+  t{} for text: t{5} + t{4} = 54
+  n{} for numbers
+  \ n{} for numbers with floating point: \3n{11.2341} = 11.234; \0n{23.99} = 23
+
+::Syntax::
+\c\:
+::m = /(5-8)*
+:a: = m::
+:b: = m::
+:a: != :b:
+://
+:a: isn't same as :b:.
+.:.
+
+This syntax is same as previous.
+::m is model and :a: and :b: are derivated from it.
+It's possible to direclty derivate:
+
+::Syntax::
+\c\:
+::m = /(5-8)*
+://
+m::
+.:.
+
+Model defining is ended at end of the line and can be continued with \ :
+
+::Syntax::
+\c\:
+::m = /Aa(3)*s are very smart and have /n* legs!
+::m2 = {text} is two line\
+text.
+://
+m::
+m2::
+.:.
+
+:::
+Cats are very smart and have 4 legs!
+This text is so long
+and long and long is two line
+text.
+.:.
+
+If you want that some variable change use :{}
+
+Counter example:
+
+::Syntax::
+\c\:
+:c: = 1
+::m = :c: \
+ :{:c: += 1}
+://
+m::×5
+.:.
+
+Here is only one solution possible:
+
+:::
+1
+2
+3
+4
+5
+
+.:.
+
+Counter without last newline:
+
+::Syntax::
+\c\:
+:c: = 1
+::ml = :c: \
+ :{:c: += 1}
+::m = m:: \
+
+://
+m::×5 ml::
+.:.
+
+Although I will finish this, if you want you can finish this (and send me push request).
