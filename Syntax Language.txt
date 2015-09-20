@@ -124,18 +124,14 @@ There should be at least one author (<--:), there is no upper limit about this o
 
 Requested parts are: Document title (======= ======), author (<--:) [even without description], TOC [Table of Content], and at least one part (~~~~ ~~~~)
 
-Recommended parts are: Document description (***** *****), author email, basic author description, licence (-l@) [with website and licence owneer], document website (-w@), version (-v@) [state and short message 
-
-would be appreciated], appendix/es (~~~ or ~~~~~~~~~~~~) and about author (<~~> <~~>)
+Recommended parts are: Document description (***** *****), author email, basic author description, licence (-l@) [with website and licence owneer], document website (-w@), version (-v@) [state and short message would be appreciated], appendix/es (~~~ or ~~~~~~~~~~~~) and about author (<~~> <~~>)
 
 If part description is problem then use:
 :Problem:\\\ Some problem ///
 
 Appendix and About Author have same rules as parts (~~~~ ~~~~).
 
-If you don't have previous parts and you won't have next parts omit \\ <> //, omit < if you dont' have previous parts and > if you won't have next parts, you don't have to name following parts, if you don't know will you 
-
-have following parts use ~> instaed of >, if document is binding two or more documents use | and ()
+If you don't have previous parts and you won't have next parts omit \\ <> //, omit < if you dont' have previous parts and > if you won't have next parts, you don't have to name following parts, if you don't know will you have following parts use ~> instaed of >, if document is binding two or more documents use | and ()
 Examples:
 \\ ~> //
 if it's first part and there might be following parts
@@ -148,9 +144,7 @@ if Document X and Document Y are previous, Document X and Document Y aren't conn
 \\ Document X | Document Z | Document Y <> Document A //
 if Document X, Document Z and Document Y are previous, Document X, Document Z and Document Y aren't connected and Document A is following
 \\ Document X, Document Z | Document Y <> Document A, (Document B | Document C) //
-if Document X, Document Z and Document Y are previous, Document X is previous in Document Z but Document Y isn't connected to Document X nor Document Z; Document A, Document B and Document C are 
-
-following, Document A is both previous in Document B and Document C but Document B and Document C aren't connected
+if Document X, Document Z and Document Y are previous, Document X is previous in Document Z but Document Y isn't connected to Document X nor Document Z; Document A, Document B and Document C are following, Document A is both previous in Document B and Document C but Document B and Document C aren't connected
 
 Just add your name on end of licence so nobody can steal it.
 
@@ -507,12 +501,116 @@ Counter without last newline:
 ::Syntax::
 \c\:
 :c: = 1
-::ml = :c: \
- :{:c: += 1}
+::ml = :c: :{:c: += 1}
 ::m = m:: \
 
 ://
 m::×5 ml::
 .:.
+
+Descriptions:
+
+::Syntax::
+\c\:
+:c: = 1
+::ml = :c: :{:c: += 1}
+::m = m:: \
+
+://
+m::×5 ml::
+:.:
+:c: - counter
+::ml - last counter model (without newline)
+::m - normal counter model (with newline)
+.:.
+
+Conditions:
+
+::Syntax::
+\c\:
+:n: = /n[>1]*
+{{if (:n:>5)}
+:c: = 5
+{else}
+:c: = 1
+}
+::ml = :c: :{:c: += 1}
+::m = m:: \n
+://
+n = :n:
+m::×(:n:-1) ml::
+.:.
+
+:::
+n = 8
+5
+6
+7
+8
+.:.
+
+Booleans:
+
+::Syntax::
+\c\:
+:n: = /n*
+:reverse: = /b*
+{{if (:reverse:)}
+:c: = :n:
+{else}
+:c: = 1
+::ml = :c: :{{{if (:reversed) :c: -= 1 {else} :c: += 1}}
+::m = m:: \n
+://
+n = :n:
+
+.:.
+
+It's possible for conditions to represent text:
+
+::Syntax::
+\c\:
+:b: = /b*
+://
+{{if (:b:)}
+True
+{else}
+False
+}
+.:.
+
+Lists:
+
+One more /*s is for lists: /l*
+
+::Syntax::
+\c\:
+:l1: = /l[\n[<10]](>5)*
+:l2: = /l[!\bl;]
+://
+l1@(3)
+.:.
+
+:::
+4
+.:.
+
+l1 is list containing more than 5 numbers smaller than 10 and l2 is list containing anything except booleans and lists.
+
+Lists are denoted as [] so [1, 2, 3, 4, 5] is list containing number from 1 to 5.
+
+List operations:
+  = equal: [1, 2, 3] = [1, 2, 3]
+  != not equal: [1, 2, 3] != [1, 2, 3, 4]
+  < less: [1, 2, 3] < [1, 2, 4]
+  > more: [1, 2, 3, 4] > [1, 2, 3]
+  <= less or equal
+  >= more or equal
+  + plus: [1, a, 3] + [4, b, 6] = [1, a, 3, 4, b, 6]
+  × times: [1, 2]×2 = [1, 2, 1, 2]
+  >- contains: [1, 2, 3] >- 2
+  -< contaied by: 3 -< [1, 2, 3]
+  @() at index: [3, 2, 1]@(3) = 1; [abc, def, ghi]@(2)@(3) = f
+
 
 Although I will finish this, if you want you can finish this (and send me push request).
